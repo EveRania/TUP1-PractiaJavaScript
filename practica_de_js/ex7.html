@@ -1,0 +1,24 @@
+<!-- Ejercicio 7: Contador de caracteres html -->
+<textarea id="miTexto" rows="4" cols="50" placeholder="Escribe aquí..."></textarea>
+<p>Caracteres: <span id="contador">0</span>/100</p>
+<script>
+
+    const texto = document.getElementById('miTexto');
+    const contador = document.getElementById('contador')
+
+    // ingresar un texto
+    texto.addEventListener('input', function () {
+        // contar caracteres a medida que los ingresa y lo borra
+        const longitud = texto.value.length;
+        // mostrarlos en p
+        contador.textContent = longitud;
+
+        if (longitud > 100) {
+            contador.style.color = 'red'
+        } else {
+            contador.style.color = 'black';
+        }
+
+    })
+
+</script>
