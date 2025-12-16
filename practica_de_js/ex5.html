@@ -1,0 +1,24 @@
+<!-- Ejercicio 5: Validación simple html -->
+<input type="text" id="inputTexto" placeholder="Escribe algo">
+<button id="validar">Validar</button>
+<p id="mensaje"></p>
+<script>
+
+    const input = document.getElementById('inputTexto');
+    const boton = document.getElementById('validar');
+    const mensaje = document.getElementById('mensaje');
+
+    //  elemento escuchador en boton 
+    boton.addEventListener('click', function () {
+        //  tomar el value del input y validarlo
+        if (input.value === '') {
+            //  mostrar el mensje de error
+
+            mensaje.textContent = 'Por favor escribe algo';
+            mensaje.style.color = 'red'
+        } else {  // mostrar el mensaje de exito
+            mensaje.textContent = '¡Texto válido!'
+            mensaje.style.color = 'green'
+        }
+    });
+</script>
