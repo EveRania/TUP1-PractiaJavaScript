@@ -1,0 +1,15 @@
+<!-- // Ejercicio 1: Contador de clics básico -->
+<!-- html -->
+<p> Contador: <span id="contador">0</span></p>
+<button id="boton">Haz clic</button>
+<script>
+    // inicializa contador en 0
+    let contador = 0;
+    //  toma el elemento con id 'boton', le agrega un evento escuchador click que ejecuta una funcion
+    document.getElementById('boton').addEventListener('click', function () {
+        // la funcion suma uno a contador (inicializado en 0)
+        contador++;
+        // se modifica en pantalla el valor de contador con textContent (modifico el contenido solo texto)
+        document.getElementById('contador').textContent = contador;
+    });
+</script>
