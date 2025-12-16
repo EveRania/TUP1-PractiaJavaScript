@@ -1,0 +1,19 @@
+<!-- Ejercicio 3: Mostrar/ocultar elemento -->
+<!-- html -->
+<button id="toggleBtn">Mostrar/Ocultar</button>
+<p id="texto" style="display: none;">¡Texto secreto!</p>
+<script>
+
+    document.getElementById('toggleBtn').addEventListener('click', function () {
+        const texto = document.getElementById('texto');
+        if (texto.style.display === 'none') {
+            texto.style.display = 'block'; // lo muestro como block por es un elemento p 
+
+        } else {
+            texto.style.display = 'none';
+        }
+
+    })
+
+
+</script>
