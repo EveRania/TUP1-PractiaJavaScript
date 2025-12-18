@@ -1,0 +1,52 @@
+<!-- Ejercicio 8: Lista con eliminación html -->
+<input type="text" id="tarea" placeholder="Nueva tarea">
+<button id="agregarTarea">Agregar</button>
+<ul id="listaTareas">
+    <li>Tarea 1 <button class="eliminar">X</button></li>
+    <li>Tarea 2 <button class="eliminar">X</button></li>
+</ul>
+<script>
+
+    const input = document.getElementById('tarea');
+    const btn = document.getElementById('agregarTarea');
+    const lista = document.getElementById('listaTareas');
+    
+    btn.addEventListener('click', function () {
+        const text = input.value.trim();
+        const li = document.createElement('li');
+        
+        li.textContent = text + '';
+        
+        const btnEliminar = document.createElement('button');
+        btnEliminar.textContent = 'X';
+        btnEliminar.className = 'eliminar';
+        btnEliminar.addEventListener('click', function () {
+            li.remove();
+        });
+        
+        
+        li.appendChild(btnEliminar);
+        lista.appendChild(li);
+        
+        input.value = '';
+    });
+    
+    // configurar botones eliminar existentes:
+     
+    const btnEliminar = document.querySelectorAll('.eliminar');
+    btnEliminar.forEach(function(boton) {
+        boton.addEventListener('click', function(){
+            this.parentElement.remove();
+        })
+    })
+    
+    
+    // btnEliminar.addEventListener('click', function () {
+        // this.li.remove;
+        
+        
+    // })
+    
+    
+    
+</script>
