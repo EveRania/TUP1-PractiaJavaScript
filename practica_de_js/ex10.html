@@ -1,0 +1,34 @@
+<!-- Ejercicio 10: Acordeón simple html -->
+<div class="acordeon">
+    <h3 class="titulo">Sección 1</h3>
+    <div class="contenido">Contenido de la sección 1</div>
+    <h3 class="titulo">Sección 2</h3>
+    <div class="contenido">Contenido de la sección 2</div>
+</div>
+<style>
+    .contenido {
+        display: none;
+    }
+
+    .activo .contenido {
+        display: block;
+    }
+</style>
+<script>
+    // acordeon: hago click en un titulo y se muestra su contenido:
+
+    const titulos = document.querySelectorAll('.titulo');
+
+    titulos.forEach(function (titulo) {
+        titulo.addEventListener('click', function () {
+            // cerrar todos
+            titulos.forEach(function (otroTitulo) {
+                otroTitulo.parentElement.classList.remove('activo');
+            });
+            // abrir solo el click
+            this.parentElement.classList.add('activo');
+
+        })
+    });
+
+</script>
