@@ -1,0 +1,39 @@
+<!-- Ejercicio 12: Selector de tema persistente html -->
+<button id="cambiarTema">Cambiar tema</button>
+<div id="contenido">
+    <h2>Mi aplicación</h2>
+    <p>Este contenido cambiará con el tema.</p>
+</div>
+<style>
+    .claro {
+        background: white;
+        color: black;
+    }
+
+    .oscuro {
+        background: #333;
+        color: white;
+    }
+</style>
+<script>
+
+    const btn = document.getElementById('cambiarTema');
+    const contenido = document.getElementById('contenido');
+
+    let temaActual = localStorage.getItem('tema') || 'claro';
+
+
+    contenido.className = temaActual;
+
+
+    btn.addEventListener('click', function () {
+        if (contenido.classList.contains('oscuro')) {
+            contenido.className = 'claro';
+            localStorage.setItem('tema', 'claro');
+        } else {
+            contenido.className = 'oscuro';
+            localStorage.setItem('tema', 'oscuro')
+        }
+    })
+
+</script>
