@@ -1,0 +1,36 @@
+<!-- Ejercicio 11: Contador persistente con localStorage html -->
+<h2>Contador: <span id="contador">0</span></h2>
+<button id="incrementar">+1</button>
+<button id="reiniciar">Reiniciar</button>
+<script>
+
+    const contador = document.getElementById('contador');
+    const btnI = document.getElementById('incrementar');
+    const btnR = document.getElementById('reiniciar');
+
+    // Obtener valor guardado o iniciar en 0: 
+    let nVuelta = localStorage.getItem('contador');
+    nVuelta = nVuelta ? parseInt(nVuelta) : 0;
+    // Mostrar valor inicial:
+    contador.textContent = nVuelta;
+
+
+    // incrementar
+    btnI.addEventListener('click', function () {
+
+        nVuelta++;
+        contador.textContent = nVuelta;
+        localStorage.setItem('contador', nVuelta);
+
+    });
+
+    // Reiniciar:
+
+    btnR.addEventListener('click', function () {
+        nVuelta = 0;
+        contador.textContent = nVuelta;
+        localStorage.setItem('contador', nVuelta);
+    });
+
+
+</script>
