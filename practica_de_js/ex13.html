@@ -1,11 +1,11 @@
-<input type="text" id="nuevaTarea" placeholder="Nueva tarea">
+<!-- <input type="text" id="nuevaTarea" placeholder="Nueva tarea">
 <button id="agregarTarea">Agregar</button>
 <ul id="listaTareas"></ul>
 <script>
     // Permite agregar tareas a la lista
     // Cada tarea tiene un botón para eliminarla
     // No es necesario persistir los datos
-</script>
+</script> -->
 
 
 Ejercicio 13: Lista de tareas persistente html
@@ -13,4 +13,46 @@ Ejercicio 13: Lista de tareas persistente html
 <button id="agregar">Agregar</button>
 <ul id="listaTareas"></ul>
 <script>
-// Escribe tu código aquí </script>
+
+    const tareaNueva = document.getElementById('nuevaTarea');
+    const btnAgregar = document.getElementById('agregar');
+    const lista = document.getElementById('listaTareas');
+
+    // tomar tareas del localstorage o iniciar vacio:
+    let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+
+    function renderTareas() {
+        lista.innerHTML = '';
+        tareas.forEach((tarea, index) => {
+            const li = document.createElement('li');
+            li.textContent = tarea;
+
+            const btnEliminar = document.createElement('button');
+            btnEliminar.textContent = 'X';
+            btnEliminar.addEventListener('click', function () {
+                tareas.splice(index, 1);
+                localStorage.setItem('tareas', JSON.stringify(tareas));
+                renderTareas();
+
+            });
+
+            li.appendChild(btnEliminar);
+            lista.appendChild(li);
+
+        });
+    }
+
+    btnAgregar.addEventListener('click', function () {
+        const texto = tareaNueva.value.trim();
+        if (texto === '') return
+        tareas.push(texto);
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+        tareaNueva.value = '';
+        renderTareas();
+
+    })
+
+    renderTareas();
+
+
+</script>
