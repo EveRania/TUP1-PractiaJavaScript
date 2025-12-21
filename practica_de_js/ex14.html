@@ -1,0 +1,44 @@
+<!-- Ejercicio 14: Formulario de registro con validación html -->
+<form id="formRegistro">
+    <input type="text" id="usuario" placeholder="Usuario (min. 3 caracteres)">
+    <input type="password" id="password" placeholder="Contraseña (min. 6 caracteres)">
+    <input type="email" id="email" placeholder="Email válido">
+    <button type="submit">Registrar</button>
+</form>
+<p id="mensajeError"></p>
+<script>
+
+    const form = document.getElementById('formRegistro');
+    const btn = document.querySelector('button');
+    const mensajeError = document.getElementById('mensajeError');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const usuario = document.getElementById('usuario').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        mensajeError.textContent = '';
+
+        if (usuario.length < 3) {
+            mensajeError.textContent = 'El usuario debe tener al menos 3 caracteres';
+            return;
+        }
+
+        if (password.length < 6) {
+            mensajeError.textContent = 'La contraseña debe tener al menos 6 caracteres';
+            return;
+        }
+
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regexEmail.test(email)) {
+            mensajeError.textContent = 'El email no es válido';
+            return;
+        }
+
+        alert('Registro exitoso');
+        form.reset();
+    });
+
+</script>
